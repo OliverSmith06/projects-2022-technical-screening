@@ -38,22 +38,14 @@ const altNumbers = (numArray) => {
 
     let startArr = (pos.length >= neg.length) ? 0 : -1;
     let number = 0;
-    number = ~number;
-    console.log('FLIPPED 1: ', number)
-    number = ~number;
-    console.log('FLIPPED 2: ', number)
-    number = ~number;
-    console.log('FLIPPED 3: ', number)
 
     for (let i = 0 ; i < numArray.length; i++){
         if(startArr == 0){
             output[i] = pos[0];
             pos.splice(0, 1);
-            // startArr += 1;
         } else {
             output[i] = neg[0];
             neg.splice(0, 1)
-            // startArr -= 1;
         }
         startArr = ~startArr;
     }
