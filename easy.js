@@ -32,29 +32,30 @@ var assert = require("assert")
 
 const altNumbers = (numArray) => {
     // TODO: COMPLETE THIS FUNCTION
-    let pos = [];
-    let neg = [];
+    let pos = numArray.filter(num => num >= 0);
+    let neg = numArray.filter(num => num < 0);
     let output = [];
-    for (let i = 0; i < numArray.length; i++){
-        if (numArray[i] < 0){
-            neg.push(numArray[i]);
-        } else {
-            pos.push(numArray[i]);
-        }
-    }
 
-    let startArr = (pos.length >= neg.length) ? 0 : 1;
+    let startArr = (pos.length >= neg.length) ? 0 : -1;
+    let number = 0;
+    number = ~number;
+    console.log('FLIPPED 1: ', number)
+    number = ~number;
+    console.log('FLIPPED 2: ', number)
+    number = ~number;
+    console.log('FLIPPED 3: ', number)
 
     for (let i = 0 ; i < numArray.length; i++){
         if(startArr == 0){
             output[i] = pos[0];
             pos.splice(0, 1);
-            startArr += 1;
+            // startArr += 1;
         } else {
             output[i] = neg[0];
             neg.splice(0, 1)
-            startArr -= 1;
+            // startArr -= 1;
         }
+        startArr = ~startArr;
     }
 
     return output;
