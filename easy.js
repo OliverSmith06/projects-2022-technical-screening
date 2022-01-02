@@ -32,7 +32,32 @@ var assert = require("assert")
 
 const altNumbers = (numArray) => {
     // TODO: COMPLETE THIS FUNCTION
-    return [];
+    let pos = [];
+    let neg = [];
+    let output = [];
+    for (let i = 0; i < numArray.length; i++){
+        if (numArray[i] < 0){
+            neg.push(numArray[i]);
+        } else {
+            pos.push(numArray[i]);
+        }
+    }
+
+    let startArr = (pos.length >= neg.length) ? 0 : 1;
+
+    for (let i = 0 ; i < numArray.length; i++){
+        if(startArr == 0){
+            output[i] = pos[0];
+            pos.splice(0, 1);
+            startArr += 1;
+        } else {
+            output[i] = neg[0];
+            neg.splice(0, 1)
+            startArr -= 1;
+        }
+    }
+
+    return output;
 }
 
 module.exports = { altNumbers } // Do not modify this line
@@ -50,12 +75,16 @@ for (let i = 0; i < array1.length; i++) {
     assert(array1[i] === answer1[i])
 }
 
+console.log('############# TEST 1 PASSED #############');
+
 let array2 = [3, 0, 0, -5, -2]
 array2 = altNumbers(array2)
 const answer2 = [3, -5, 0, -2, 0]
 for (let i = 0; i < array2.length; i++) {
     assert(array2[i] === answer2[i])
 }
+
+console.log('############# TEST 2 PASSED #############');
 
 let array3 = [0, -3, 3, -1, 1, -1]
 array3 = altNumbers(array3)
@@ -73,9 +102,13 @@ if (array3[0] === 0) {
     assert(false)
 }
 
+console.log('############# TEST 3 PASSED #############');
+
 let array4 = []
 array4 = altNumbers(array4)
 assert(array4.length === 0)
+
+console.log('############# TEST 4 PASSED #############');
 
 let array5 = [3,2,1,-1,-2,-3,-4]
 array5 = altNumbers(array5)
@@ -84,9 +117,13 @@ for (let i = 0; i < array5.length; i++) {
     assert(array5[i] === answer5[i])
 }
 
+console.log('############# TEST 5 PASSED #############');
+
 let array6 = [5,-1,-2,-3,-4,0,3]
 array6 = altNumbers(array6)
 const answer6 = [-1, 5, -2, 0, -3, 3, -4]
 for (let i = 0; i < array6.length; i++) {
     assert(array6[i] === answer6[i])
 }
+
+console.log('############# TEST 6 PASSED #############');
